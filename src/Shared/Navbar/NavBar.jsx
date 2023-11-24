@@ -20,7 +20,7 @@ const NavBar = () => {
                         </ul>
                     </div>
                     <div className="">
-                        <h2 className=" flex flex-row items-center gap-3 text-2xl font-medium"><img className="h-14 w-18 rounded-3xl" src="https://i.ibb.co/rmcYLFP/fox.png" alt="" /><span className="text-orange-700 font-bold">R O Y E L  T E C H</span></h2>
+                        <h2 className=" flex flex-row items-center gap-3 text-2xl font-medium"><img className="h-14 w-18 rounded-3xl" src="https://i.ibb.co/rmcYLFP/fox.png" alt="" /><span className="text-white font-bold">R O Y E L  T E C H</span></h2>
                     </div>
                 </div>
 
