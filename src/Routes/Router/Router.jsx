@@ -7,6 +7,7 @@ import SignUp from "../../Pages/SignUp/SignUp";
 import Login from "../../Pages/Login/Login";
 import Dashboard from "../../Pages/Dashboard/Dashboard";
 import MyProfile from "../../Pages/Dashboard/MyProfile/MyProfile";
+import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
 
  export const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ import MyProfile from "../../Pages/Dashboard/MyProfile/MyProfile";
         {
           path: 'myProfile',
           element: <MyProfile></MyProfile>
+        },
+        {
+          path: "addProduct",
+          element: <AddProduct></AddProduct>
         }
       ]
     }
