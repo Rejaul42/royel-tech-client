@@ -1,11 +1,61 @@
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { useState } from "react";
+// import { CgProfile } from "react-icons/cg";
 
 
 const NavBar = () => {
+    const [updateUser, setUpdateUser] = useState()
+    const { user, logOut } = useAuth()
+    const axiosPublic = useAxiosPublic();
+    const email = user?.email;
+
+    axiosPublic.get(`/users/${email}`)
+        .then(result => {
+            setUpdateUser(result.data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error));
+    }
     const navLink = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/menu">Product</NavLink></li>
-    
+        {user ? <>
+            <li tabIndex={0}>
+                <details>
+                    <summary className="">
+                        {updateUser?.photo ? <div className="avatar online">
+                            <div className="w-10 rounded-full">
+                                <img src={updateUser?.photo} />
+                            </div>
+                        </div> :
+                            <div className="avatar placeholder">
+                                <div className="bg-neutral text-neutral-content rounded-full w-10">
+                                    <span className="text-3xl">{updateUser?.name}</span>
+                                </div>
+                            </div>
+                        }
+                    </summary>
+                    <ul className="p-2 text-black w-32">
+                        <li><NavLink>{updateUser?.name}</NavLink></li>
+                        <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+                        <li className=""><NavLink onClick={handleLogOut} to="/login">Log Out</NavLink></li>
+                    </ul>
+                </details>
+            </li>
+        </> :
+            <>
+                <li className="btn"><NavLink to="/login">Login</NavLink></li>
+            </>
+        }
+
     </>
     return (
         <div>
@@ -21,7 +71,7 @@ const NavBar = () => {
                     </div>
                     <div className="">
                         <h2 className=" flex flex-row items-center gap-3 text-2xl font-medium"><Link to="/">
-                        <img className="h-14 w-18 rounded-3xl" src="https://i.ibb.co/rmcYLFP/fox.png" alt="" /></Link> <span className="text-white font-bold">R O Y E L  T E C H</span>
+                            <img className="h-14 w-18 rounded-3xl" src="https://i.ibb.co/rmcYLFP/fox.png" alt="" /></Link> <span className="text-white font-bold">R O Y E L  T E C H</span>
                         </h2>
                     </div>
                 </div>
@@ -32,7 +82,15 @@ const NavBar = () => {
                             {navLink}
                         </ul>
                     </div>
-                    <a className="btn">Button</a>
+                    <div>
+                        {/* {
+                            user ? <>
+                                <li className="btn"><NavLink onClick={handleLogOut} to="/login">Log Out</NavLink></li>
+                            </> : <>
+                                <li className="btn"><NavLink to="/login">Login</NavLink></li>
+                            </>
+                        } */}
+                    </div>
                 </div>
             </div>
         </div>

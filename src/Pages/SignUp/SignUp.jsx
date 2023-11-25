@@ -1,17 +1,50 @@
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 
 const SignUp = () => {
+    const navigate = useNavigate()
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { createUser, updateUserProfile } = useAuth()
+    const axiosPublic = useAxiosPublic()
 
-    const onSubmit = data =>{
-        console.log(data)
+    const onSubmit = data => {
+        // console.log(data)
+        createUser(data.email, data.password)
+            .then(result => {
+                console.log(result.user)
+                updateUserProfile(data.name, data.photoURL)
+                .then( () =>{
+                    const userInfo = {
+                        name: data.name,
+                        email: data.email,
+                        photo: data.photoURL
+                    }
+                    axiosPublic.post('/users', userInfo)
+                    .then(res =>{
+                        if(res.data.insertedId){
+                            reset()
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'User created successfully.',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            navigate('/')
+                        }
+                    })
+                })
+                .catch(error => console.log(error))
+            })
     }
     return (
         <div>
-             <div className="bg-base-300">
+            <div className="bg-base-300">
                 <Helmet>
                     <title>Bistro Boos | Sign Up</title>
                 </Helmet>
@@ -61,7 +94,7 @@ const SignUp = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
-                            <input className="form-control mt-6 btn bg-[#D1A054B2] text-white" type="submit" value="Sign Up" />
+                            <input className="form-control mt-6 btn bg-orange-600 text-white" type="submit" value="Sign Up" />
                         </form>
                         <div className="text-center">
                             <p>Already have an account? <Link to="/login" className="underline font-medium">Go to login</Link></p>
