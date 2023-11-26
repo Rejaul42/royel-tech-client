@@ -3,10 +3,12 @@ import { FaHome, FaList, FaShoppingCart, FaUtensils } from "react-icons/fa";
 import { TbLayoutGridAdd } from "react-icons/tb";
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaBook, FaUsers } from "react-icons/fa6";
+import useProduct from "../../Hooks/useProduct";
 
 
 const Dashboard = () => {
     const isAdmin = false;
+    const [products] = useProduct()
     return (
         <div className="flex ">
             {/* dashboard side bar */}
@@ -55,7 +57,7 @@ const Dashboard = () => {
                                 <li>
                                     <NavLink to="/dashboard/myProduct">
                                         <FaShoppingCart></FaShoppingCart>
-                                        My Product</NavLink>
+                                        My Product ({products.length})</NavLink>
                                 </li>
                             </>
                     }

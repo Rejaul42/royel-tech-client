@@ -6,7 +6,8 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { TbLayoutGridAdd } from "react-icons/tb";
 import useAuth from "../../../Hooks/useAuth";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -18,6 +19,7 @@ const AddProduct = () => {
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth()
     const email = user?.email;
+    const navigate = useNavigate()
 
     axiosPublic.get(`/users/${email}`)
         .then(result => {
@@ -62,6 +64,7 @@ const AddProduct = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                navigate('/dashboard/myProduct')
             }
         }
     }
@@ -129,7 +132,7 @@ const AddProduct = () => {
                         </div>
 
                         <button className="btn">
-                            <Link to="/myProduct">Add Product <TbLayoutGridAdd className="text-2xl"/></Link>
+                            Add Product <TbLayoutGridAdd className="text-2xl"/>
                         </button>
                     </form>
                 </div>
