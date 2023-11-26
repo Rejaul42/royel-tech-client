@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import useProduct from "../../../Hooks/useProduct";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { MdDeleteSweep, MdAutorenew } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const MyProduct = () => {
     const [products, refetch] = useProduct()
@@ -72,7 +73,7 @@ const MyProduct = () => {
                                 <p>vote</p>
                             </td>
                             <td>Status</td>
-                            <td><button className="btn btn-ghost btn-xs">Update <MdAutorenew className="text-2xl text-blue-500"/></button></td>
+                            <td><button className="btn btn-ghost btn-xs"><Link to={`update/${product._id}`}>Update <MdAutorenew className="text-2xl text-blue-500"/></Link></button></td>
                             <td>
                                 <button onClick={() => handleDelete(product._id)} className="btn btn-ghost btn-xs"><MdDeleteSweep className="text-2xl text-red-600"/></button>
                             </td>

@@ -9,7 +9,7 @@ const useProduct = () => {
     const { refetch, data: products = [] } = useQuery({
         queryKey: ['product', user?.email],
         queryFn: async() => {
-            const res = await axiosSecure.get(`/product/${user.email}`);
+            const res = await axiosSecure.get(`/allProducts/${user.email}`);
             return res.data;
         }
     })

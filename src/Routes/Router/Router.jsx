@@ -9,6 +9,7 @@ import Dashboard from "../../Pages/Dashboard/Dashboard";
 import MyProfile from "../../Pages/Dashboard/MyProfile/MyProfile";
 import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
 import MyProduct from "../../Pages/Dashboard/MyProduct/MyProduct";
+import UpdateProduct from "../../Pages/Dashboard/UpdateProduct/UpdateProduct";
 
  export const router = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ import MyProduct from "../../Pages/Dashboard/MyProduct/MyProduct";
         {
           path: "myProduct",
           element: <MyProduct></MyProduct>
+        },
+        {
+          path: 'myProduct/update/:id',
+          element: <UpdateProduct></UpdateProduct>
         }
       ]
     }
