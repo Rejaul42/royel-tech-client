@@ -10,6 +10,8 @@ import MyProfile from "../../Pages/Dashboard/MyProfile/MyProfile";
 import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
 import MyProduct from "../../Pages/Dashboard/MyProduct/MyProduct";
 import UpdateProduct from "../../Pages/Dashboard/UpdateProduct/UpdateProduct";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Product from "../../Pages/Home/Product/Product"
 
  export const router = createBrowserRouter([
     {
@@ -28,27 +30,31 @@ import UpdateProduct from "../../Pages/Dashboard/UpdateProduct/UpdateProduct";
           path: '/login',
           element: <Login></Login>
         },
+        {
+          path: "/products",
+          element: <Product></Product>
+        }
       ]
     },
     {
       path: 'dashboard',
-      element: <Dashboard></Dashboard>,
+      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
         {
           path: 'myProfile',
-          element: <MyProfile></MyProfile>
+          element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
         },
         {
           path: "addProduct",
-          element: <AddProduct></AddProduct>
+          element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
         },
         {
           path: "myProduct",
-          element: <MyProduct></MyProduct>
+          element: <PrivateRoute><MyProduct></MyProduct></PrivateRoute>
         },
         {
           path: 'myProduct/update/:id',
-          element: <UpdateProduct></UpdateProduct>
+          element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>
         }
       ]
     }

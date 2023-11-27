@@ -7,6 +7,7 @@ import { TbLayoutGridAdd } from "react-icons/tb";
 import useAuth from "../../../Hooks/useAuth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 // import { Link } from "react-router-dom";
 
 
@@ -23,7 +24,7 @@ const AddProduct = () => {
 
     axiosPublic.get(`/users/${email}`)
         .then(result => {
-            setUpdateUser(result.data)
+            setUpdateUser(result?.data)
         })
         .catch(error => {
             console.log(error)
@@ -70,6 +71,9 @@ const AddProduct = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Royel Tech | Add Product</title>
+            </Helmet>
              <div>
                 <SectionTitle subheading="What's new?" heading="Add an latest product"></SectionTitle>
                 <div>

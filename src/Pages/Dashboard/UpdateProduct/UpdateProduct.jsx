@@ -4,6 +4,8 @@ import { useState } from "react";
 import { TbLayoutGridAdd } from "react-icons/tb";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
+import SectionTitle from "../../../Shared/SectionTitle/SectionTitle";
 // import SectionTitle from "../../../Shared/SectionTitle";
 
 
@@ -61,8 +63,11 @@ const UpdateProduct = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Royel Tech | update product</title>
+            </Helmet>
             <div>
-                {/* <SectionTitle subheading="What's new?" heading="Update your product"></SectionTitle> */}
+                <SectionTitle subheading="What's new?" heading="Update your product"></SectionTitle>
                 <div>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control w-full my-6">

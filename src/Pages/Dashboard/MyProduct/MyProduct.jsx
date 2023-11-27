@@ -4,6 +4,7 @@ import useProduct from "../../../Hooks/useProduct";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { MdDeleteSweep, MdAutorenew } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const MyProduct = () => {
     const [products, refetch] = useProduct()
@@ -37,6 +38,9 @@ const MyProduct = () => {
     
     return (
         <div>
+            <Helmet>
+                <title>Royel Tech | My Product</title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

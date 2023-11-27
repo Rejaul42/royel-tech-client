@@ -4,6 +4,7 @@ import { TbLayoutGridAdd } from "react-icons/tb";
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaBook, FaUsers } from "react-icons/fa6";
 import useProduct from "../../Hooks/useProduct";
+import { Helmet } from "react-helmet";
 
 
 const Dashboard = () => {
@@ -11,6 +12,9 @@ const Dashboard = () => {
     const [products] = useProduct()
     return (
         <div className="flex ">
+            <Helmet>
+                <title>Royel Tech | Dashboard</title>
+            </Helmet>
             {/* dashboard side bar */}
             <div className="w-64 min-h-screen bg-orange-600 text-white">
                 <ul className="menu p-4">
@@ -68,7 +72,7 @@ const Dashboard = () => {
                             Home</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/product">
+                        <NavLink to="/products">
                             <AiOutlineMenu />
                             Product</NavLink>
                     </li>

@@ -26,7 +26,7 @@ const NavBar = () => {
     }
     const navLink = <>
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/menu">Product</NavLink></li>
+        <li><NavLink to="/products">Product</NavLink></li>
         {user ? <>
             <li tabIndex={0}>
                 <details>
