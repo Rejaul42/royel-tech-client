@@ -9,7 +9,7 @@ const MyProfile = () => {
     const { user } = useAuth()
     const email = user?.email;
 
-    axiosSecure.get(`/users/${email}`)
+    axiosSecure.get(`/individualUser/${email}`)
         .then(result => {
             setUpdateUser(result.data)
         })

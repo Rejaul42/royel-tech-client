@@ -13,9 +13,9 @@ const NavBar = () => {
     const [isAdmin] = useAdmin()
     const email = user?.email;
 
-    axiosPublic.get(`/users/${email}`)
+    axiosPublic.get(`/individualUser/${email}`)
         .then(result => {
-            setUpdateUser(result.data)
+            setUpdateUser(result?.data)
         })
         .catch(error => {
             console.log(error)

@@ -5,10 +5,11 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { FaBook, FaUsers } from "react-icons/fa6";
 import useProduct from "../../Hooks/useProduct";
 import { Helmet } from "react-helmet";
+import useAdmin from "../../Hooks/useAdmin";
 
 
 const Dashboard = () => {
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
     const [products] = useProduct()
     return (
         <div className="flex ">
