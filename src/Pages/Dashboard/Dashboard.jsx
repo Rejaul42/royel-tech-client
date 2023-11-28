@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet";
 
 
 const Dashboard = () => {
-    const isAdmin = false;
+    const isAdmin = true;
     const [products] = useProduct()
     return (
         <div className="flex ">
@@ -49,7 +49,7 @@ const Dashboard = () => {
                             :
                             <>
                                 <li>
-                                    <NavLink to="/dashboard/myProfile">
+                                    <NavLink to="/dashboard/userHome">
                                         <FaHome></FaHome>
                                         My Profile</NavLink>
                                 </li>

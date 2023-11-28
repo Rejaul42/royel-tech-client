@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useState } from "react";
+import useAdmin from "../../Hooks/useAdmin";
 // import { CgProfile } from "react-icons/cg";
 
 
@@ -9,6 +10,7 @@ const NavBar = () => {
     const [updateUser, setUpdateUser] = useState()
     const { user, logOut } = useAuth()
     const axiosPublic = useAxiosPublic();
+    const [isAdmin] = useAdmin()
     const email = user?.email;
 
     axiosPublic.get(`/users/${email}`)
@@ -45,7 +47,12 @@ const NavBar = () => {
                     </summary>
                     <ul className="p-2 text-black w-32">
                         <li><NavLink>{updateUser?.name}</NavLink></li>
-                        <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+                        {
+                            user && isAdmin && <li><Link to="/dashboard/adminHome">Dashboard</Link></li>
+                        }
+                        {
+                           user && !isAdmin && <li><NavLink to="/dashboard/userHome">Dashboard</NavLink></li>
+                        }
                         <li className=""><NavLink onClick={handleLogOut} to="/login">Log Out</NavLink></li>
                     </ul>
                 </details>

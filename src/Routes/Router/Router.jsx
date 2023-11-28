@@ -12,6 +12,8 @@ import MyProduct from "../../Pages/Dashboard/MyProduct/MyProduct";
 import UpdateProduct from "../../Pages/Dashboard/UpdateProduct/UpdateProduct";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Product from "../../Pages/Home/Product/Product"
+import AdminRoute from "../AdminRoute/AdminRoute";
+import AdminHome from "../../Pages/Dashboard/Admin/AdminHome";
 
  export const router = createBrowserRouter([
     {
@@ -41,7 +43,7 @@ import Product from "../../Pages/Home/Product/Product"
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
         {
-          path: 'myProfile',
+          path: 'userHome',
           element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
         },
         {
@@ -55,7 +57,12 @@ import Product from "../../Pages/Home/Product/Product"
         {
           path: 'myProduct/update/:id',
           element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>
-        }
+        },
+        // Admin only
+        {
+          path: "adminHome",
+          element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+        },
       ]
     }
   ]);
