@@ -22,7 +22,7 @@ const AddProduct = () => {
     const email = user?.email;
     const navigate = useNavigate()
 
-    axiosPublic.get(`/users/${email}`)
+    axiosPublic.get(`/individualUser/${email}`)
         .then(result => {
             setUpdateUser(result?.data)
         })
@@ -48,9 +48,9 @@ const AddProduct = () => {
                 externalLink: data.link,
                 productDescription: data.description,
                 image: res.data.data.display_url,
-                userName: updateUser.name,
-                userPhoto: updateUser.photo,
-                userEmail: updateUser.email
+                userName: updateUser?.name,
+                userPhoto: updateUser?.photo,
+                userEmail: updateUser?.email
             }
             // 
             const menuRes = await axiosSecure.post('/product', menuItem);
