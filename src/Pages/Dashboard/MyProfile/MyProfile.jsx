@@ -25,7 +25,7 @@ const MyProfile = () => {
         .catch(error => {
             console.log(error)
         })
-    const paymentUser = payments?.map(payment => payment.email == email);
+    const paymentUser = payments.some(payment => payment.email === email);
 
     return (
         <div className="space-y-4">
