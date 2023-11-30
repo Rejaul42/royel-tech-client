@@ -1,8 +1,12 @@
-# React + Vite
+Note: Sometime data cannot be loaded but after refresh data can be loaded.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Assignment on : assignment12_category_0014
 
-Currently, two official plugins are available:
+Admin Email: admin@gmail.com
+Password: 123456Q!q1
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Live site link: https://royel-tech.web.app/
+
+Client Site repo: https://github.com/programming-hero-web-course1/b8a12-client-side-Rejaul42
+
+Server site repo: https://github.com/programming-hero-web-course1/b8a12-server-side-Rejaul42
