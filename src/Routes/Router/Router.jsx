@@ -16,6 +16,7 @@ import AdminRoute from "../AdminRoute/AdminRoute";
 import AdminHome from "../../Pages/Dashboard/Admin/AdminHome";
 import AllUsers from "../../Pages/Dashboard/Admin/AllUsers";
 import ProductDetails from "../../Pages/Home/ProductDetails/ProductDetails";
+import ManageItem from "../../Pages/Dashboard/ManageItem/ManageItem";
 
  export const router = createBrowserRouter([
     {
@@ -72,6 +73,10 @@ import ProductDetails from "../../Pages/Home/ProductDetails/ProductDetails";
         {
           path: "users",
           element : <AdminRoute><AllUsers></AllUsers></AdminRoute>
+        },
+        {
+          path: "manageItems",
+          element: <AdminRoute><ManageItem></ManageItem></AdminRoute>
         }
       ]
     }

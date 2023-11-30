@@ -6,11 +6,13 @@ import { FaBook, FaUsers } from "react-icons/fa6";
 import useProduct from "../../Hooks/useProduct";
 import { Helmet } from "react-helmet";
 import useAdmin from "../../Hooks/useAdmin";
+import useAllProduct from "../../Hooks/useAllProduct";
 
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
     const [products] = useProduct()
+    const [allProduct] = useAllProduct()
     return (
         <div className="flex ">
             <Helmet>
@@ -34,7 +36,7 @@ const Dashboard = () => {
                             <li>
                                 <NavLink to="/dashboard/manageItems">
                                     <FaList></FaList>
-                                    Manage Items</NavLink>
+                                    Manage Items ({allProduct.length})</NavLink>
                             </li>
                             <li>
                                 <NavLink to="/dashboard/bookings">

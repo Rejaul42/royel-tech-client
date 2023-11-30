@@ -7,23 +7,6 @@ import useAllProduct from "../../../Hooks/useAllProduct";
 const Product = () => {
     const [allProduct, refetch] = useAllProduct()
     const [products, setProducts] = useState();
-    // console.log(products)
-
-    // axiosPublic.get('/product')
-    //     .then(result => {
-    //         setLoadedproduct(result?.data)
-    //     })
-    //     .catch(error => {
-    //         console.log(error)
-    //     })
-
-    // const { refetch, data: loadedProduct = [] } = useQuery({
-    //     queryKey: ['product'],
-    //     queryFn: async() => {
-    //         const res = await axiosPublic.get('/product');
-    //         return res.data;
-    //     }
-    // })
 
     const handleChange = (data) => {
         if(data == 'All'){
