@@ -17,6 +17,7 @@ import AdminHome from "../../Pages/Dashboard/Admin/AdminHome";
 import AllUsers from "../../Pages/Dashboard/Admin/AllUsers";
 import ProductDetails from "../../Pages/Home/ProductDetails/ProductDetails";
 import ManageItem from "../../Pages/Dashboard/ManageItem/ManageItem";
+import Payment from "../../Pages/Dashboard/Payment/Payment";
 
  export const router = createBrowserRouter([
     {
@@ -64,6 +65,10 @@ import ManageItem from "../../Pages/Dashboard/ManageItem/ManageItem";
         {
           path: 'myProduct/update/:id',
           element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>
+        },
+        {
+          path: "payment",
+          element: <Payment></Payment>
         },
         // Admin only
         {

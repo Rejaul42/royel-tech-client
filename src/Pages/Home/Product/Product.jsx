@@ -8,13 +8,15 @@ const Product = () => {
     const [allProduct, refetch] = useAllProduct()
     const [products, setProducts] = useState();
 
+    const approvedProduct = allProduct?.filter(item => item.status === 'approved');
+
     const handleChange = (data) => {
         if(data == 'All'){
-            setProducts(allProduct)
+            setProducts(approvedProduct)
             refetch()
         } 
         else{
-            const filterData = allProduct?.filter(item => item.category === data);
+            const filterData = approvedProduct?.filter(item => item.category === data);
             setProducts(filterData)
             refetch()
         }

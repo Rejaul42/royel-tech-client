@@ -10,7 +10,8 @@ const FeaturedProducts = () => {
     axiosPublic.get('/product')
         .then(result => {
             const allProduct = (result?.data);
-            const latestProduct = allProduct.slice(-6).reverse();
+            const approvedProduct = allProduct?.filter(item => item.status === 'approved');
+            const latestProduct = approvedProduct.slice(-6).reverse();
             setProducts(latestProduct)
         })
         .catch(error => {

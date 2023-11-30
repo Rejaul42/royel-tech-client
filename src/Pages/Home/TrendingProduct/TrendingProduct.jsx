@@ -10,7 +10,8 @@ const TrendingProduct = () => {
     axiosPublic.get('/product')
         .then(result => {
             const allProduct = (result?.data);
-            const trendingProduct = allProduct.sort((a, b) => b?.vote - a?.vote);
+            const approvedProduct = allProduct?.filter(item => item.status === 'approved');
+            const trendingProduct = approvedProduct.sort((a, b) => b?.vote - a?.vote);
             const topSixProduct = trendingProduct.slice(0, 6);
             setProducts(topSixProduct)
         })
