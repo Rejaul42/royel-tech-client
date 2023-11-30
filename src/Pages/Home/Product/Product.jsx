@@ -1,32 +1,43 @@
 import { useState } from "react";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import ProductCard from "./ProductCard";
 import { Helmet } from "react-helmet";
+import useAllProduct from "../../../Hooks/useAllProduct";
 
 
 const Product = () => {
-    const [loadedProduct, setLoadedproduct] = useState([]);
+    const [allProduct, refetch] = useAllProduct()
     const [products, setProducts] = useState();
-    const axiosPublic = useAxiosPublic();
     // console.log(products)
 
-    axiosPublic.get('/product')
-        .then(result => {
-            setLoadedproduct(result?.data)
-        })
-        .catch(error => {
-            console.log(error)
-        })
+    // axiosPublic.get('/product')
+    //     .then(result => {
+    //         setLoadedproduct(result?.data)
+    //     })
+    //     .catch(error => {
+    //         console.log(error)
+    //     })
+
+    // const { refetch, data: loadedProduct = [] } = useQuery({
+    //     queryKey: ['product'],
+    //     queryFn: async() => {
+    //         const res = await axiosPublic.get('/product');
+    //         return res.data;
+    //     }
+    // })
 
     const handleChange = (data) => {
         if(data == 'All'){
-            setProducts(loadedProduct)
+            setProducts(allProduct)
+            refetch()
         } 
         else{
-            const filterData = loadedProduct?.filter(item => item.category === data);
+            const filterData = allProduct?.filter(item => item.category === data);
             setProducts(filterData)
+            refetch()
         }
+        
     }
+    
     return (
         <div className="pt-28">
             <h2 className="text-center text-3xl mb-6">Product Sorting by Tags Name</h2>
@@ -49,7 +60,7 @@ const Product = () => {
                 <Helmet>
                     <title>Royel Tech | Product</title>
                 </Helmet>
-                {products?.map(product => <ProductCard key={product._id} product={product}></ProductCard>)}
+                {products?.map(product => <ProductCard key={product._id} product={product} refetch={refetch}></ProductCard>)}
             </div>
         </div>
     );
