@@ -13,6 +13,5 @@ Admin Password: 123456Q!q1
 
 Live site link: https://royel-tech.web.app/
 
-Client Site repo: https://github.com/programming-hero-web-course1/b8a12-client-side-Rejaul42
-
-Server site repo: https://github.com/programming-hero-web-course1/b8a12-server-side-Rejaul42
+client site repo: https://github.com/Rejaul42/royel-tech-client
+server site repo: https://github.com/Rejaul42/royel-tech-server
